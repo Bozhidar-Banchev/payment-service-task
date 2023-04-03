@@ -1,0 +1,102 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
+  objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+  <changeSet id="0.0.1-01"
+             author="bbanchev">
+    <createTable tableName="merchants">
+      <column name="ID"
+              type="UUID">
+        <constraints nullable="false"
+                     primaryKey="true"
+                     primaryKeyName="pk_merchants"/>
+      </column>
+      <column name="name"
+              type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description"
+              type="VARCHAR(255)"/>
+      <column name="email"
+              type="VARCHAR(255)"/>
+      <column name="status"
+              type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="total_transaction_sum"
+              type="INT"/>
+    </createTable>
+  </changeSet>
+  <changeSet id="0.0.1-02"
+             author="bbanchev">
+    <createTable tableName="transactions">
+      <column name="id"
+              type="UUID">
+        <constraints nullable="false"
+                     primaryKey="true"
+                     primaryKeyName="pk_transactions"/>
+      </column>
+      <column name="amount"
+              type="INT"/>
+      <column name="status"
+              type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="name"
+              type="VARCHAR(255)"/>
+      <column name="merchant_id"
+              type="UUID"/>
+      <column name="type"
+              type="VARCHAR(255)"/>
+      <column name="created"
+              type="DATETIME"/>
+      <column name="email"
+              type="VARCHAR(255)"/>
+      <column name="phone"
+              type="VARCHAR(255)"/>
+    </createTable>
+  </changeSet>
+  <changeSet id="0.0.1-03"
+             author="bbanchev">
+    <createTable tableName="user_roles">
+      <column name="merchant_id"
+              type="UUID">
+        <constraints nullable="false"/>
+      </column>
+      <column name="role_name"
+              type="VARCHAR(255)"/>
+    </createTable>
+  </changeSet>
+  <changeSet id="0.0.1-04"
+             author="bbanchev">
+    <addUniqueConstraint columnNames="email"
+                         constraintName="uc_merchants_email"
+                         tableName="merchants"/>
+  </changeSet>
+  <changeSet id="0.0.1-05"
+             author="bbanchev">
+    <addUniqueConstraint columnNames="name"
+                         constraintName="uc_merchants_name"
+                         tableName="merchants"/>
+  </changeSet>
+  <changeSet id="0.0.1-06"
+             author="bbanchev">
+    <addForeignKeyConstraint baseColumnNames="merchant_id"
+                             baseTableName="transactions"
+                             constraintName="FK_TRANSACTIONS_ON_MERCHANT"
+                             referencedColumnNames="ID"
+                             referencedTableName="merchants"/>
+  </changeSet>
+  <changeSet id="0.0.1-07"
+             author="bbanchev">
+    <addForeignKeyConstraint baseColumnNames="merchant_id"
+                             baseTableName="user_roles"
+                             constraintName="fk_user_roles_on_merchant"
+                             referencedColumnNames="ID"
+                             referencedTableName="merchants"/>
+  </changeSet>
+
+</databaseChangeLog>
