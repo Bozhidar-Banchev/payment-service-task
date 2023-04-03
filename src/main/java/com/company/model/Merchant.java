@@ -17,6 +17,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -78,5 +79,6 @@ public class Merchant implements Serializable {
   @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "merchant_id"))
   @Enumerated(EnumType.STRING)
   @Column(name = "role_name")
+  @ToString.Exclude
   private Set<UserRole> roles;
 }

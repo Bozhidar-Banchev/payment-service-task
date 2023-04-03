@@ -26,7 +26,7 @@ public class DefaultMerchantService implements MerchantService {
 
   @Override
   public List<MerchantDto> findAll() {
-
+    Optional<Merchant> byId = merchantRepository.findById(UUID.fromString("1e6eeef9-7e17-4bf8-9d43-419541e3c3d6"));
     return merchantRepository.findAll().stream()
         .map(merchantMapper::entityToDto)
         .collect(Collectors.toList());

@@ -2,8 +2,8 @@ package com.company.dto;
 
 public enum UserRole {
 
-  ROLE_MERCHANT("merchant"),
-  ROLE_ADMIN("admin");
+  MERCHANT("merchant"),
+  ADMIN("admin");
 
   private final String name;
 

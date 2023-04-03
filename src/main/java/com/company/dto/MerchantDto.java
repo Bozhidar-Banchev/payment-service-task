@@ -11,10 +11,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /** A DTO for the {@link com.company.model.Merchant} entity */
-@Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Data
 public class MerchantDto {
 
   @NotBlank private String name;

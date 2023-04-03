@@ -8,10 +8,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /** A DTO for the {@link com.company.model.Transaction} entity */
-@Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 public class TransactionDto {
 
   @Positive private Integer amount;
