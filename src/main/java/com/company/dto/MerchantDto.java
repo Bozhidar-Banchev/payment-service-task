@@ -5,23 +5,29 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import java.util.List;
 import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /** A DTO for the {@link com.company.model.Merchant} entity */
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class MerchantDto {
 
-  @NotBlank private final String name;
+  @NotBlank private String name;
 
-  private final String description;
+  private String description;
 
-  private final String email;
+  private String email;
 
-  @NotNull private final MerchantStatus status;
+  @NotNull private MerchantStatus status;
 
-  @Positive private final Integer totalTransactionSum;
+  @Positive private Integer totalTransactionSum;
 
-  private final List<TransactionDto> transactions;
+  private List<TransactionDto> transactions;
 
-  private final Set<UserRole> roles;
+  private Set<UserRole> roles;
 }

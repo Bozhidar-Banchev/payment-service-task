@@ -2,19 +2,25 @@ package com.company.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /** A DTO for the {@link com.company.model.Transaction} entity */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TransactionDto {
 
-  @Positive private final Integer amount;
+  @Positive private Integer amount;
 
-  @NotNull private final TransactionStatus status;
+  @NotNull private TransactionStatus status;
 
-  private final String name;
+  private String name;
 
-  private final TransactionType type;
+  private TransactionType type;
 
-  private final CustomerInfoDto customerInfo;
+  private CustomerInfoDto customerInfo;
 }
